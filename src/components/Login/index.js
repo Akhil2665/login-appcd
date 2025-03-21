@@ -3,13 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { login } from "../../features/Auth/authSlice";
 
+import './index.css'
+
+const user1 = 
+  { username: "Akhil", password: "Akhil@123" }
+
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.auth);
-  console.log(data)
+  const errMsg = useSelector((globalState) => globalState.authSlice.errMsg);
+  console.log(errMsg)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,28 +26,33 @@ function Login() {
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="input-container">
-          <label>USERNAME</label>
+          <label htmlFor="username" className="label">USERNAME</label>
           <input
+            id="username"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="input"
             required
           />
         </div>
         <div className="input-container">
-          <label>USERNAME</label>
+          <label htmlFor="password" className="label">PASSWORD</label>
           <input
             type="password"
+            id="password"
+            className="input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit"  >Login</button>
+        {errMsg !== null ? <p className="err-msg">{errMsg}</p> : null}
+        <button type="submit"  className="login-btn" >Login</button>
       </form>
       <div className="help-text">
         <p>Try these credentials</p>
-        <p>username: user1 . userPassword: password</p>
+        <p>username: {user1.username}: password: {user1.password}</p>
       </div>
     </div>
   );

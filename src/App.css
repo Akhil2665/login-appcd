@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.app-container {
+  background-image: url("https://res.cloudinary.com/dak8sudez/image/upload/t_Banner 16:9/v1741533740/Rectangle_1456_1_m6swv9.png");
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 500;
+}

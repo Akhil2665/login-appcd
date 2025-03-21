@@ -14,10 +14,10 @@ const authSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      const { username, password } = action.payload;
+      const { username, password } = action.payload ;
       const user = users.find(
         (eachUser) =>
-          eachUser.username === username && eachUser.password === password
+          eachUser.username === username && eachUser.password === password 
       );
       if (user) {
         state.user = { username: user.username };
@@ -30,7 +30,7 @@ const authSlice = createSlice({
     },
     logout: (state, action) => {
       state.user = null ;
-      state.isAuthenticated = true;
+      state.isAuthenticated = false;
       state.errMsg = null;
     },
   },

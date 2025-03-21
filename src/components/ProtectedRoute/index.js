@@ -1,15 +1,17 @@
 import { useSelector } from "react-redux";
 
-import Login from "../Login";
+import { Navigate } from "react-router-dom";
 
-function ProtectedRoute({childern}) {
-    const data = useSelector(state => state)
-    console.log(data, "Protectedroute")
+
+
+function ProtectedRoute({children}) {
+    const isAuthenticated = useSelector(globalState => globalState.authSlice.isAuthenticated)
+    console.log(isAuthenticated, "Protectedroute")
 
     if (!isAuthenticated) {
-        return <Login />
+        return <Navigate to="/login" />
     }
-    return childern
+    return children
 }
 
 export default ProtectedRoute
