@@ -15,18 +15,16 @@ const authSlice = createSlice({
   reducers: {
     login: (state, action) => {
       const { username, password } = action.payload ;
-      const user = users.find(
-        (eachUser) =>
-          eachUser.username === username && eachUser.password === password 
-      );
-      if (user) {
-        state.user = { username: user.username };
+      debugger
+
+      if(username){
+        debugger
+        state.user = { username: username };
         state.isAuthenticated = true;
         state.errMsg = null;
-      } else {
-        state.isAuthenticated = false;
-        state.errMsg = "Invalid username or password";
       }
+        
+
     },
     logout: (state, action) => {
       state.user = null ;

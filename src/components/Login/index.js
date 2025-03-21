@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { login } from "../../features/Auth/authSlice";
 
 import './index.css'
+import { useNavigate } from "react-router-dom";
 
 const user1 = 
   { username: "Akhil", password: "Akhil@123" }
@@ -13,9 +14,15 @@ function Login() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const errMsg = useSelector((globalState) => globalState.authSlice.errMsg);
-  console.log(errMsg)
-
+  const isAuthenticated = useSelector((globalState) => globalState.authSlice.isAuthenticated);
+  const navigate = useNavigate()
+  // useEffect(() => {
+  //   if(isAuthenticated){
+  //    navigate("/dashboard")
+  //   }
+  
+  // }, [isAuthenticated])
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     dispatch(login({username, password}))
@@ -47,7 +54,7 @@ function Login() {
             required
           />
         </div>
-        {errMsg !== null ? <p className="err-msg">{errMsg}</p> : null}
+        {/* {errMsg !== null ? <p className="err-msg">{errMsg}</p> : null} */}
         <button type="submit"  className="login-btn" >Login</button>
       </form>
       <div className="help-text">
