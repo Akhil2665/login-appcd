@@ -16,12 +16,12 @@ function Login() {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((globalState) => globalState.authSlice.isAuthenticated);
   const navigate = useNavigate()
-  // useEffect(() => {
-  //   if(isAuthenticated){
-  //    navigate("/dashboard")
-  //   }
+  useEffect(() => {
+    if(isAuthenticated){
+     navigate("/dashboard")
+    }
   
-  // }, [isAuthenticated])
+  }, [isAuthenticated])
   
   const handleSubmit = (e) => {
     e.preventDefault()

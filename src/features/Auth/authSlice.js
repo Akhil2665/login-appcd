@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const users = [
   { username: "Akhil", password: "Akhil@123" },
   { username: "Chinna", password: "chinna@123" },
@@ -26,7 +27,7 @@ const authSlice = createSlice({
         
 
     },
-    logout: (state, action) => {
+    logout: (state) => {
       state.user = null ;
       state.isAuthenticated = false;
       state.errMsg = null;
