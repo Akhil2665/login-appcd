@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { logout } from "../../features/Auth/authSlice";
 import './index.css'
+import { Box, Grid } from "@mui/material";
+import DashboardCard from "../DashboardCard/DashboardCard";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -21,10 +23,22 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <h2>Welcome, {user?.username || "User"}</h2>
-      <p>you have successfully logged in.</p>
-      <button  type="button" className="logout-btn" onClick={handleLogout}>
-        Logout
-      </button>
+      <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+        <Grid size={12}>
+        <DashboardCard />         
+        </Grid>
+        <Grid size={12}>
+          <DashboardCard />
+        </Grid>
+        <Grid size={12}>
+        <DashboardCard />
+        </Grid>
+        <Grid size={12}>
+        <DashboardCard />
+        </Grid>
+      </Grid>
+    </Box>
       
     </div>
   );
