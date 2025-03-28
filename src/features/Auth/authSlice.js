@@ -5,11 +5,16 @@ const users = [
   { username: "Akhil", password: "Akhil@123" },
   { username: "Chinna", password: "chinna@123" },
 ];
+// const userEmails = [
+//   {email: 'akhilpappu8@gmail.com'},
+//   {email: 'akhileee.16@gmail.com'},
+// ]
 
 const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
+    userEmail: null,
     isAuthenticated: false,
     errMsg: "null",
   },
@@ -23,9 +28,19 @@ const authSlice = createSlice({
         state.user = { username: username };
         state.isAuthenticated = true;
         state.errMsg = null;
-      }
-        
+      }       
+    },
+    emailSignIn: (state, action) => {
+      const { email } = action.payload ;
+      debugger
 
+      if(email){
+        debugger
+        state.userEmail = { email: email };
+        state.user =  { email: email };
+        state.isAuthenticated = true;
+        state.errMsg = null;
+      }         
     },
     logout: (state) => {
       state.user = null ;
@@ -35,5 +50,5 @@ const authSlice = createSlice({
   },
 });
 
-export const  {login, logout } = authSlice.actions
+export const  {login, logout, emailSignIn } = authSlice.actions
 export default authSlice.reducer

@@ -9,3 +9,10 @@
 .logout-btn:hover {
   scale: 1.2;
 }
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
